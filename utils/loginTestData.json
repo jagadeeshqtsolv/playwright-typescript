@@ -1,0 +1,13 @@
+[
+    {
+"username" : "jagadeesh@qtsolv.com",
+"password" : "Quarks@123",
+"loginType": "JobSearcher"
+},
+{
+    "username" : "jagadeesh@qtsolv.com",
+    "password" : "Quarks@123",
+    "loginType": "Employer"
+    }
+
+]

@@ -1,0 +1,70 @@
+<testsuites id="" name="" tests="3" failures="2" skipped="0" errors="0" time="7.30946">
+<testsuite name="LoginSuite.spec.ts" timestamp="2024-06-03T13:13:05.366Z" hostname="Chrome" tests="1" failures="1" skipped="0" time="4.845" errors="0">
+<testcase name="@Web TC002_Validate login with invalid credentials fail scenario" classname="LoginSuite.spec.ts" time="4.845">
+<failure message="LoginSuite.spec.ts:49:8 @Web TC002_Validate login with invalid credentials fail scenario" type="FAILURE">
+<![CDATA[  [Chrome] › LoginSuite.spec.ts:49:8 › @Web TC002_Validate login with invalid credentials fail scenario 
+
+    Error: locator.textContent: Error: strict mode violation: locator('form[autocomplete=\'on\'] div:nth-child(1)') resolved to 3 elements:
+        1) <div class="server-err">Invalid details. Please check the Email ID - Pass…</div> aka getByText('Invalid details. Please check')
+        2) <div class="grecaptcha-badge" data-style="bottomright">…</div> aka locator('.grecaptcha-badge')
+        3) <div class="grecaptcha-logo">…</div> aka locator('.grecaptcha-logo')
+
+    Call log:
+      - waiting for locator('form[autocomplete=\'on\'] div:nth-child(1)')
+
+
+       at ../pageobjects/LoginPage.ts:34
+
+      32 |
+      33 | async getErrorMessage() {
+    > 34 |    return await this.errorMessage.textContent();
+         |                                   ^
+      35 | }
+      36 |
+      37 | }
+
+        at LoginPage.getErrorMessage (/Applications/jagadeesh/typescript/pageobjects/LoginPage.ts:34:35)
+        at /Applications/jagadeesh/typescript/tests/LoginSuite.spec.ts:61:26
+
+    Error: end of central directory record signature not found
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="LoginSuite.spec.ts" timestamp="2024-06-03T13:13:05.366Z" hostname="Firefox" tests="1" failures="0" skipped="0" time="5.481" errors="0">
+<testcase name="@Web TC002_Validate login with invalid credentials fail scenario" classname="LoginSuite.spec.ts" time="5.481">
+</testcase>
+</testsuite>
+<testsuite name="LoginSuite.spec.ts" timestamp="2024-06-03T13:13:05.366Z" hostname="Safari" tests="1" failures="1" skipped="0" time="4.872" errors="0">
+<testcase name="@Web TC002_Validate login with invalid credentials fail scenario" classname="LoginSuite.spec.ts" time="4.872">
+<failure message="LoginSuite.spec.ts:49:8 @Web TC002_Validate login with invalid credentials fail scenario" type="FAILURE">
+<![CDATA[  [Safari] › LoginSuite.spec.ts:49:8 › @Web TC002_Validate login with invalid credentials fail scenario 
+
+    Error: locator.textContent: Error: strict mode violation: locator('form[autocomplete=\'on\'] div:nth-child(1)') resolved to 3 elements:
+        1) <div class="server-err">Invalid details. Please check the Email ID - Pass…</div> aka getByText('Invalid details. Please check')
+        2) <div class="grecaptcha-badge" data-style="bottomright">…</div> aka locator('.grecaptcha-badge')
+        3) <div class="grecaptcha-logo">…</div> aka locator('.grecaptcha-logo')
+
+    Call log:
+      - waiting for locator('form[autocomplete=\'on\'] div:nth-child(1)')
+
+
+       at ../pageobjects/LoginPage.ts:34
+
+      32 |
+      33 | async getErrorMessage() {
+    > 34 |    return await this.errorMessage.textContent();
+         |                                   ^
+      35 | }
+      36 |
+      37 | }
+
+        at LoginPage.getErrorMessage (/Applications/jagadeesh/typescript/pageobjects/LoginPage.ts:34:35)
+        at /Applications/jagadeesh/typescript/tests/LoginSuite.spec.ts:61:26
+
+    Error: end of central directory record signature not found
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>
