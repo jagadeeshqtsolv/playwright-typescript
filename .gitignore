@@ -25,3 +25,4 @@ test-results/.last-run.json
 .env
 .cache/
 *.json
+playwright-report/index.html

@@ -4,6 +4,8 @@ const { devices } = require('@playwright/test');
 const config = {
   testDir: './tests',
   retries :0,
+  workers: 3,
+  fullyParallel: true,
   
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
