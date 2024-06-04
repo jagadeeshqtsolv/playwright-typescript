@@ -41,12 +41,12 @@ test(`@Web TC001_Validate login with invalid credentials`, async ({page})=>
      //js file- Login js, DashboardPage
       const loginPage = poManager.getLoginPage();
       await loginPage.validLogin("test@gmail.com","testpassword");
-      
-      expect(loginPage.getErrorMessage(),"Invalid details. Please check the Email ID - Password combination.");
-     
-  });
 
-  test.only(`@Web TC002_Validate login with invalid credentials fail scenario`, async ({page})=>
+      expect(await loginPage.getErrorMessage()).toBe("Invalid details. Please check the Email ID - Password combination.");
+    
+     });
+
+  test(`@Web TC002_Validate login with invalid credentials fail scenario`, async ({page})=>
     {
       const poManager = new POManager(page);
     
@@ -58,8 +58,8 @@ test(`@Web TC001_Validate login with invalid credentials`, async ({page})=>
         const loginPage = poManager.getLoginPage();
         await loginPage.validLogin("test@gmail.com","password");
         
-        expect(await loginPage.getErrorMessage(),"Invalid details. Please check the Email ID - Password.");
-       
+        expect(await loginPage.getErrorMessage()).toBe("Invalid details.");
+    
     });
 
 

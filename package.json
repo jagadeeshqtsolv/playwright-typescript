@@ -8,9 +8,10 @@
     "web": "npx playwright test --grep @Web",
     "api": "npx playwright test --grep @API",
     "html-report": "npx playwright test --reporter=html && npx playwright show-report",
-    "allure:clean": "rm -rf allure-results",
+    "allureclean": "rm -rf allure-report",
+    "allureexecution": "npx playwright test --reporter=html,line,allure-playwright",
     "alluregenerate": "allure generate ./allure-results --clean",
-    "allurereport": "allure open ./allure-results"
+    "allureopen": "allure open ./allure-report"
   },
   "keywords": [],
   "author": "Jagadeesh Madhura",
