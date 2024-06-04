@@ -3,7 +3,7 @@ import {test, expect} from '@playwright/test';
 import {POManager} from '../pageobjects/POManager';
 
 //Json->string->js object
-const dataset =  JSON.parse(JSON.stringify(require("../utils/loginTestData.json")));
+const dataset =  JSON.parse(JSON.stringify(require("../resources/loginTestData.json")));
 
 
 for(const data of dataset)
