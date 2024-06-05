@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "regression": "HEADLESS=false npx playwright test",
-    "web": "npx playwright test --grep @Web",
-    "api": "npx playwright test --grep @API",
+    "web": "HEADLESS=true npx playwright test --grep @Web",
+    "api": "HEADLESS=true npx playwright test --grep @API",
     "firefox": "BROWSER_NAME=firefox HEADLESS=true NODE_ENV=test npx playwright test",
-    "html-report": "npx playwright test --reporter=html && npx playwright show-report",
+    "html-report": "HEADLESS=true npx playwright test --reporter=html && npx playwright show-report",
     "allureclean": "rm -rf allure-report",
-    "allureexecution": "npx playwright test --reporter=html,line,allure-playwright",
+    "allureexecution": "HEADLESS=true npx playwright test --reporter=html,line,allure-playwright",
     "alluregenerate": "allure generate ./allure-results --clean",
     "allureopen": "allure open ./allure-report"
   },
