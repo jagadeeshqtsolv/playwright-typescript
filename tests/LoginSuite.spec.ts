@@ -31,7 +31,7 @@ test(`@Web Naukri App login for ${data.loginType}`, async ({page})=>
 }
 
 
-test.only(`@Web TC001_Validate login with invalid credentials`, async ({page})=>
+test(`@Web TC001_Validate login with invalid credentials`, async ({page})=>
   {
     const poManager = new POManager(page);
   

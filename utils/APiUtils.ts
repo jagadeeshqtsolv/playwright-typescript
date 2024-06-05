@@ -1,54 +1,36 @@
-// export class APiUtils
-// {
-//     apiContext:any;
-//     loginPayLoad:string;
+import { BrowserContext, Request } from 'playwright';
+import fetch from 'node-fetch';
 
-//     constructor(apiContext:any,loginPayLoad:string)
-//     {
-//         this.apiContext =apiContext; 
-//         this.loginPayLoad = loginPayLoad;
-        
-//     }
-
-//     async getToken()
-//      {
-//         const loginResponse =  await  this.apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
-//         {
-//             data:this.loginPayLoad
-//          } )//200,201,
-//         const loginResponseJson = await loginResponse.json();
-//         const token =loginResponseJson.token;
-//         console.log(token);
-//         return token;
-
-//     }
-
-//     async createOrder(orderPayLoad:string)
-//     {
-//         let response = {token : String,orderId : String};
-//        response.token = await this.getToken();
-//     const orderResponse = await this.apiContext.post("https://rahulshettyacademy.com/api/ecom/order/create-order",
-//    {
-//     data : orderPayLoad,
-//     headers:{
-//                 'Authorization' :response.token,
-//                 'Content-Type'  : 'application/json'
-//             },
-
-//    })
-//    const orderResponseJson =await orderResponse.json();
-//    console.log(orderResponseJson);
-//   const orderId = orderResponseJson.orders[0];
-//    response.orderId = orderId;
-
-//    return response;
-// }
+export class ApiFunctions {
 
 
+    async doPost(endpoint: string, headers: Record<string, string>, body: any): Promise<any> {
+        return this.makeRequest('POST', endpoint, headers, body);
+    }
 
-//     }
-// module.exports = {APiUtils};
+    async doGet(endpoint: string, headers: Record<string, string>): Promise<any> {
+        return this.makeRequest('GET', endpoint, headers);
+    }
 
+    async doPut(endpoint: string, headers: Record<string, string>, body: any): Promise<any> {
+        return this.makeRequest('PUT', endpoint, headers, body);
+    }
 
+    async doDelete(endpoint: string, headers: Record<string, string>): Promise<any> {
+        return this.makeRequest('DELETE', endpoint, headers);
+    }
 
-
+    async makeRequest(method: string, endpoint: string, headers: Record<string, string>, body?: any): Promise<any> {
+        const url = endpoint;
+        const options: any = {
+            method,
+            headers,
+        };
+        if (body) {
+            options.body = JSON.stringify(body);
+        }
+        const response = await fetch(url, options);
+        return response.json();
+    }
+    
+}
