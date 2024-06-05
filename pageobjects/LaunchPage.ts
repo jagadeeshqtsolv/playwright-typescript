@@ -1,4 +1,5 @@
 import {test, expect,Locator,Page} from '@playwright/test';
+import config from '../playwright.config.ts';
 
 
 export class LaunchPage {
@@ -13,7 +14,7 @@ constructor(page:Page)
 
 async goTo()
 {
-    await this.page.goto("https://www.naukri.com/");
+    await this.page.goto(config.baseUrl);
 }
 
 async clickLoginMenu()

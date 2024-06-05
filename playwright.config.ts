@@ -1,32 +1,25 @@
-// @ts-check
 const { devices } = require('@playwright/test');
+import { globalConfig } from './config/global-config';
+import { devConfig } from './config/dev-config';
+import { testConfig } from './config/test-config';
+import { stagingConfig } from './config/staging-config';
 
-const config = {
-  testDir: './tests',
-  retries :0,
-  workers: 3,
-  fullyParallel: true,
-  
-  /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
-  expect: {
-  
-    timeout: 5000
-  },
-  
-  reporter: "html",
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-
-    browserName : 'chromium',
-    headless : false,
-    ignoreHTTPSErrors: true,
-		screenshot: `only-on-failure`,
-		video: `retain-on-failure`,
-		trace: `retain-on-failure`
-  },
-
-
+// Function to load the environment-specific configuration based on the selected environment
+const loadConfig = (env) => {
+  switch (env) {
+    case 'test':
+      return { ...globalConfig, ...testConfig };
+    case 'staging':
+      return { ...globalConfig, ...stagingConfig };
+    default:
+      return { ...globalConfig, ...devConfig };
+  }
 };
 
-module.exports = config;
+// Define the environment to be used
+const environment = process.env.NODE_ENV || 'test';
+
+// Load the configuration based on the selected environment
+const config = loadConfig(environment);
+
+export default config;

@@ -1,6 +1,7 @@
 import {test, expect} from '@playwright/test';
 
 import {POManager} from '../pageobjects/POManager';
+import config from '../playwright.config.ts';
 
 //Json->string->js object
 const dataset =  JSON.parse(JSON.stringify(require("../resources/loginTestData.json")));
@@ -30,7 +31,7 @@ test(`@Web Naukri App login for ${data.loginType}`, async ({page})=>
 }
 
 
-test(`@Web TC001_Validate login with invalid credentials`, async ({page})=>
+test.only(`@Web TC001_Validate login with invalid credentials`, async ({page})=>
   {
     const poManager = new POManager(page);
   
@@ -40,7 +41,7 @@ test(`@Web TC001_Validate login with invalid credentials`, async ({page})=>
   
      //js file- Login js, DashboardPage
       const loginPage = poManager.getLoginPage();
-      await loginPage.validLogin("test@gmail.com","testpassword");
+      await loginPage.validLogin(config.username,"testpassword");
 
       expect(await loginPage.getErrorMessage()).toBe("Invalid details. Please check the Email ID - Password combination.");
     
