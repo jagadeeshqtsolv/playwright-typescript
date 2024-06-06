@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
        name: Full Report
-       path: ${{ github.workspace }}/*
+       path: ${{ github.workspace }}/allure*
 
     - name: Send mail
       uses: dawidd6/action-send-mail@v3
