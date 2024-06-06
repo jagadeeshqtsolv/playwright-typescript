@@ -39,39 +39,12 @@ jobs:
     - name: Generate Allure Report
       run: npm run alluregenerate
       continue-on-error: true
-
-    - name: Get current timestamp
-      id: ts
-      run: echo "::set-output name=timestamp::$(date +%Y%m%d%H%M%S)"
-
-    - name: Create report directory
-      run: |
-       mkdir -p gh-pages/allure-report-${{ steps.ts.outputs.timestamp }}
-       cp -r ./allure-report/* gh-pages/allure-report-${{ steps.ts.outputs.timestamp }}/
-
-    - name: Commit and push new report
-      run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout gh-pages || git checkout --orphan gh-pages
-          mkdir -p reports
-          cp -r gh-pages/allure-report-${{ steps.ts.outputs.timestamp }} reports/
-          git add reports/
-          git commit -m "Add Allure report from ${{ steps.ts.outputs.timestamp }}"
-          git push origin gh-pages
-
-    - name: Deploy Allure report to GitHub Pages
-      if: always()
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        personal_token: ${{ secrets.PAT }}
-        publish_dir: reports/allure-report-${{ env.timestamp }}
           
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
        name: Report
-       path: allure-report.zip
+       path: ${{ github.workspace }}/allure-report
 
     - name: Send mail
       uses: dawidd6/action-send-mail@v3
@@ -82,7 +55,7 @@ jobs:
           password: jmqjvkcghbeudpad
           subject: Test Automation Suite Report
           to: jagadeesh@qtsolv.com
-          from: Platform Solutions QA <jagadeeshmadhura2@gmail.com>
+          from: QA Automation <jagadeeshmadhura2@gmail.com>
           secure: true
           html_body: file://${{ github.workspace }}/allure-report/index.html
           attachments: ${{ github.workspace }}/allure-report/index.html
