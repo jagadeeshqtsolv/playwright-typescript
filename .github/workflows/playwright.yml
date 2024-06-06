@@ -4,6 +4,10 @@ on:
     branches: [ blazedemo ]
   pull_request:
     branches: [ blazedemo ]
+
+permissions:
+ contents: write
+  
 jobs:
   test:
     timeout-minutes: 60
@@ -40,8 +44,8 @@ jobs:
       if: always()
       uses: peaceiris/actions-gh-pages@v3
       with:
-       github_token: ${{ secrets.GITHUB_TOKEN }}
-       publish_dir: ./allure-report
+        personal_token: ${{ secrets.PAT }}
+        publish_dir: ${{github.workspace}}/allure-report
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
