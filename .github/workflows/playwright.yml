@@ -60,15 +60,6 @@ jobs:
           git commit -m "Add Allure report from ${{ steps.ts.outputs.timestamp }}"
           git push origin gh-pages
 
-    - name: Remove old reports
-      run: |
-          git checkout gh-pages
-          cd reports
-          ls -d allure-report-* | sort -r | tail -n +6 | xargs rm -rf
-          git add .
-          git commit -m "Remove old Allure reports"
-          git push origin gh-pages
-
     - name: Deploy Allure report to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v3
