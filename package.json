@@ -11,8 +11,8 @@
     "html-report": "HEADLESS=true npx playwright test --reporter=html && npx playwright show-report",
     "allureclean": "rm -rf allure-report",
     "allureexecution": "HEADLESS=true npx playwright test --reporter=html,line,allure-playwright",
-    "alluregenerate": "allure generate ./allure-results --clean",
-    "allureopen": "allure open ./allure-report"
+    "alluregenerate": "npx allure generate ./allure-results --clean",
+    "allureopen": "npx allure open ./allure-report"
   },
   "keywords": [],
   "author": "Jagadeesh Madhura",
