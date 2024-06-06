@@ -18,6 +18,9 @@ jobs:
       
     - name: Install Allure
       run: npm i -D allure-playwright
+
+    - name: Cleanup old reports
+      run: npm run allureclean
       
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
@@ -47,4 +50,5 @@ jobs:
           to: jagadeesh@qtsolv.com
           from: Automation Team<jagadeeshmadhura2@gmail.com>
           secure: true
+          html_body: file://${{ github.workspace }}/allure-report/index.html
           attachments: ${{github.workspace}}/allure-report/index.html
