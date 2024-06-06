@@ -82,15 +82,16 @@ jobs:
        name: Report
        path: allure-report.zip
 
-    - name: Send email with report link
-      if: always()
+    - name: Send mail
       uses: dawidd6/action-send-mail@v3
       with:
-          server_address: smtp.sendgrid.net
-          server_port: 587
-          username: apikey
-          password: ${{ secrets.SENDGRID_API_KEY }}
-          subject: "Allure Report"
-          body: "The Allure report is available at: https://jagadeeshqtsolv.github.io/playwright-typescript/reports/allure-report-${{ env.timestamp }}/index.html"
-          to: "jagadeesh@qtsolv.com"
-          from: "jagadeesh@qtsolv.com"
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: jagadeeshmadhura2@gmail.com
+          password: jmqjvkcghbeudpad
+          subject: Test Automation Suite Report
+          to: jagadeesh@qtsolv.com
+          from: Platform Solutions QA <jagadeeshmadhura2@gmail.com>
+          secure: true
+          html_body: file://${{ github.workspace }}/allure-report/index.html
+          attachments: ${{ github.workspace }}/allure-report/index.html
