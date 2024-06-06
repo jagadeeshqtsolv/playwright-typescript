@@ -41,13 +41,13 @@ jobs:
       continue-on-error: true
           
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.2
+      uses: actions/upload-artifact@v4
       with:
        name: Full Report
        path: ${{ github.workspace }}/*
 
     - name: Send mail
-      uses: dawidd6/action-send-mail@v4
+      uses: dawidd6/action-send-mail@v3
       with:
           server_address: smtp.gmail.com
           server_port: 465
