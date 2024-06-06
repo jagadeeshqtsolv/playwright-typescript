@@ -36,10 +36,6 @@ jobs:
     - name: Generate Allure Report
       run: npm run alluregenerate
       continue-on-error: true
-
-    - name: Allure Open
-      run: npm run allureopen
-      continue-on-error: true
           
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
