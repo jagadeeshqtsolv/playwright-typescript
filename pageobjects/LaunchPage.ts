@@ -15,6 +15,7 @@ constructor(page:Page)
 async goTo()
 {
     await this.page.goto(config.baseUrl);
+    await this.page.waitForLoadState('networkidle');
 }
 
 async clickLoginMenu()
