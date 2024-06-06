@@ -32,16 +32,22 @@ jobs:
     - name: Run Playwright tests
       run: npm run web
       continue-on-error: true
+
+    - name: Upload Allure results
+      uses: actions/upload-artifact@v4
+      with:
+          name: allure-results
+          path: allure-results
       
     - name: Generate Allure Report
       run: npm run alluregenerate
       continue-on-error: true
           
-    - name: Upload a Build Artifact
+    - name: Upload Allure report
       uses: actions/upload-artifact@v4
       with:
-       name: Full Report
-       path: ${{ github.workspace }}/allure*
+          name: allure-report
+          path: allure-report
 
     - name: Send mail
       uses: dawidd6/action-send-mail@v3
@@ -54,5 +60,5 @@ jobs:
           to: jagadeesh@qtsolv.com
           from: QA Automation <jagadeeshmadhura2@gmail.com>
           secure: true
-          html_body: file://${{ github.workspace }}/playwright-report/index.html
+          html_body: <html><body><p>Automation report generated</p></body></html>
           attachments: ${{ github.workspace }}/playwright-report/index.html
