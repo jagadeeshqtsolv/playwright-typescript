@@ -15,14 +15,21 @@ jobs:
         node-version: 18
     - name: Install dependencies
       run: npm ci
+      
+    - name: Install Allure
+      run: npm i -D allure-playwright
+      
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+      
     - name: Run Playwright tests
       run: npm run web
       continue-on-error: true
+      
     - name: Allure Report Generation
       run: npm run alluregenerate
       continue-on-error: true
+      
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
@@ -34,10 +41,10 @@ jobs:
       with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: feautomationuser@gmail.com
-          password: ceeqdbpbodukvahm
+          username: jagadeeshmadhura2@gmail.com
+          password: zefkubiaatpaqyso
           subject:  Test Automation Suite Report
           to: jagadeesh@qtsolv.com
-          from: Automation Team<jagadeesh@qtsolv.com>
+          from: Automation Team<jagadeeshmadhura2@gmail.com>
           secure: true
           attachments: ${{github.workspace}}/allure-report/index.html
