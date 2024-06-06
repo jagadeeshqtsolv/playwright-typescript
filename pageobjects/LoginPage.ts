@@ -20,10 +20,8 @@ constructor(page:Page)
 
 
 async validLogin(username:string,password:string)
-{
-    //await this.emailId.click();   
+{ 
     await  this.emailId.fill(username);
-   // await this.password.click();
     await this.password.fill(password);
     await this.signInbutton.click();
     await this.page.waitForLoadState('networkidle');

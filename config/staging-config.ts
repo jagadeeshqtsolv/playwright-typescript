@@ -1,5 +1,5 @@
 export const stagingConfig = {
-  baseUrl: 'https://naukri1.com', 
+  baseUrl: 'https://naukri.com', 
   username: 'jagadeesh@qtsolv.com', 
   password: 'Quarks@123',
 };
