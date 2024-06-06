@@ -39,11 +39,14 @@ jobs:
       run: npm run alluregenerate
       continue-on-error: true
       
+    - name: Zip Allure Report
+      run: zip -r allure-report.zip ${{ github.workspace }}/allure-report
+
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
-          name: Report
-          path: ${{ github.workspace }}/allure-report/
+       name: Report
+       path: allure-report.zip
 
     - name: Send mail
       uses: dawidd6/action-send-mail@v3
@@ -56,5 +59,5 @@ jobs:
           to: jagadeesh@qtsolv.com
           from: Automation Team<jagadeeshmadhura2@gmail.com>
           secure: true
-          html_body: file://${{ github.workspace }}/allure-report/index.html
+          html_body: <html><body> <p>Please find automation report </p></body> </html>
           attachments: ${{github.workspace}}/allure-report/index.html
