@@ -5,16 +5,16 @@ export class LoginPage {
     emailId :Locator;
     password : Locator;
     signInbutton : Locator;
-    errorMessage: Locator;
+    brandName: Locator;
     page : Page;
 
 constructor(page:Page)
 {
     this.page = page;
-    this.emailId = page.getByPlaceholder("Enter your active Email ID / Username");
-    this.password = page.getByPlaceholder("Enter your password");
+    this.emailId = page.locator("#email");
+    this.password = page.locator("#password");
     this.signInbutton= page.locator("button[type='submit']");
-    this.errorMessage = page.locator("div[class='server-err']");
+    this.brandName = page.locator("a[class='navbar-brand']");
 
 }
 
@@ -28,9 +28,14 @@ async validLogin(username:string,password:string)
 
 }
 
-async getErrorMessage() {
-    return await this.errorMessage.textContent();
+async getBrandNameText() {
+    return await this.brandName.first().textContent();
 }
+
+async getPageTitle() {
+    return this.page.title();
+}
+
 
 }
 module.exports = {LoginPage};

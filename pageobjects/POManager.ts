@@ -2,13 +2,11 @@
 import {LoginPage} from './LoginPage';
 import {Page} from '@playwright/test';
 import { LaunchPage } from './LaunchPage';
-import { HomePage } from './HomePage';
 
 export class POManager
 {
     loginPage: LoginPage;
     launchPage: LaunchPage;
-    homePage: HomePage;
     page : Page;
 
 
@@ -17,7 +15,6 @@ constructor(page:Page)
     this.page = page;
     this.launchPage = new LaunchPage(this.page);
     this.loginPage = new LoginPage(this.page);
-    this.homePage = new HomePage(this.page);
 
 }
 
@@ -31,12 +28,6 @@ getLaunchPage()
 {
     return this.launchPage;
 }
-
-getHomePage()
-{
-    return this.homePage;
-}
-
 
 }
 module.exports = {POManager};
