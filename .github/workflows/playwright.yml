@@ -41,10 +41,10 @@ jobs:
       continue-on-error: true
           
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.1
+      uses: actions/upload-artifact@v3.1.2
       with:
-       name: Report
-       path: ${{ github.workspace }}/allure-report
+       name: Allure Report
+       path: ${{ github.workspace }}/allure-report/
 
     - name: Send mail
       uses: dawidd6/action-send-mail@v3
@@ -57,5 +57,5 @@ jobs:
           to: jagadeesh@qtsolv.com
           from: QA Automation <jagadeeshmadhura2@gmail.com>
           secure: true
-          html_body: file://${{ github.workspace }}/allure-report/index.html
-          attachments: ${{ github.workspace }}/allure-report/index.html
+          html_body: file://${{ github.workspace }}/playwright-report/index.html
+          attachments: ${{ github.workspace }}/playwright-report/index.html
