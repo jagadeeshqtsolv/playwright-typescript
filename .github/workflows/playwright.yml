@@ -21,7 +21,7 @@ jobs:
       run: npm install --force
       
     - name: Install Allure
-      run: npm i -D allure-playwright
+      run: npm install -g allure-playwright
       
     - name: Cleanup old reports
       run: npm run allureclean
