@@ -43,11 +43,11 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
-       name: Allure Report
-       path: ${{ github.workspace }}/allure-report/
+       name: Full Report
+       path: ${{ github.workspace }}/*
 
     - name: Send mail
-      uses: dawidd6/action-send-mail@v3
+      uses: dawidd6/action-send-mail@v4
       with:
           server_address: smtp.gmail.com
           server_port: 465
