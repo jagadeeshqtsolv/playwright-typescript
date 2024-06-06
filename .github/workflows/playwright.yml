@@ -19,9 +19,25 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npm run web
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+      continue-on-error: true
+    - name: Allure Report Generation
+      run: npm run alluregenerate
+      continue-on-error: true
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.1
       with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+          name: Report
+          path: ${{ github.workspace }}/allure-report/
+
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v3
+      with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: feautomationuser@gmail.com
+          password: ceeqdbpbodukvahm
+          subject:  Test Automation Suite Report
+          to: jagadeesh@qtsolv.com
+          from: Automation Team<jagadeesh@qtsolv.com>
+          secure: true
+          attachments: ${{github.workspace}}/allure-report/index.html
