@@ -22,9 +22,6 @@ jobs:
       
     - name: Install Allure
       run: npm i -D allure-playwright
-
-    - name: Install Allure command line
-      run: npm install -g allure-commandline --save-dev
       
     - name: Cleanup old reports
       run: npm run allureclean
@@ -38,6 +35,10 @@ jobs:
       
     - name: Generate Allure Report
       run: npm run alluregenerate
+      continue-on-error: true
+
+    - name: Allure Open
+      run: npm run allureopen
       continue-on-error: true
           
     - name: Upload a Build Artifact
