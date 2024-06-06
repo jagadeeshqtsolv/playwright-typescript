@@ -44,7 +44,7 @@ jobs:
       if: always()
       uses: peaceiris/actions-gh-pages@v3
       with:
-        personal_token: ${{ secrets.PAT }}
+        personal_token: "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"
         publish_dir: ${{github.workspace}}/allure-report
 
     - name: Upload a Build Artifact
@@ -53,16 +53,15 @@ jobs:
        name: Report
        path: allure-report.zip
 
-    - name: Send mail
+    - name: Send email with report link
+      if: always()
       uses: dawidd6/action-send-mail@v3
       with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: jagadeeshmadhura2@gmail.com
-          password: zefkubiaatpaqyso
-          subject:  Test Automation Suite Report
-          to: jagadeesh@qtsolv.com
-          from: Automation Team<jagadeeshmadhura2@gmail.com>
-          secure: true
-          html_body: <html><body> <p>Please find automation report </p></body> </html>
-          attachments: ${{github.workspace}}/allure-report/index.html
+          server_address: smtp.sendgrid.net
+          server_port: 587
+          username: apikey
+          password: ${{ secrets.SENDGRID_API_KEY }}
+          subject: "Allure Report"
+          body: "The Allure report is available at: https://jagadeeshqtsolv.github.io/gh-pages/index.html"
+          to: "jagadeesh@qtsolv.com"
+          from: "jagadeesh@qtsolv.com"
