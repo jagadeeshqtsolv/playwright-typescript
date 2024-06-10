@@ -5,7 +5,7 @@ import config from '../playwright.config.ts';
 
 
 
-test(`@Web TC001_Validate home page`, async ({page})=>
+test(`@Web TC001_Validate Launch page`, async ({page})=>
   {
     const poManager = new POManager(page);
   
