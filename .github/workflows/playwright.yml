@@ -1,9 +1,6 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [ blazedemo ]
-  pull_request:
-    branches: [ blazedemo ]
+  workflow_dispatch:
 
 permissions:
  contents: write
