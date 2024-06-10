@@ -1,5 +1,5 @@
 import {test, expect,Locator,Page} from '@playwright/test';
-import config from '../playwright.config.ts';
+import config from '../playwright.config';
 
 
 export class LaunchPage {

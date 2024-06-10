@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { ApiFunctions } from '../../utils/APiUtils';
-import config from '../../playwright.config';
+import { ApiFunctions } from '../utils/APiUtils';
+import config from '../playwright.config';
 
 // Create an instance of the ApiFunctions class
 const apiFunctions = new ApiFunctions();

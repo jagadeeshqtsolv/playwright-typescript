@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
 
-import {POManager} from '../../pageobjects/POManager.ts';
-import config from '../../playwright.config.ts';
+import {POManager} from '../pageobjects/POManager.ts';
+import config from '../playwright.config.ts';
 
 
 

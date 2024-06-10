@@ -1,5 +1,13 @@
+const automationType = process.env.AUTOMATION_TYPE || 'api';;
+let testDir = './tests';
+
+if (automationType === 'api') {
+  testDir = './tests-api';
+}
+
+
 export const globalConfig = {
-    testDir: process.env.TEST_DIR || './tests',
+    testDir: process.env.TEST_DIR || testDir,
     retries: parseInt(process.env.RETRIES ?? '0', 10) || 1,
     workers: parseInt(process.env.WORKERS ?? '3', 10) || 3,
 
