@@ -21,8 +21,9 @@
     "@playwright/test": "^1.44.1",
     "@types/node": "^20.14.0",
     "@types/node-fetch": "^2.6.11",
+    "allure-commandline": "^2.29.0",
     "allure-playwright": "^2.15.1",
-    "exceljs": "^4.4.0",  
+    "exceljs": "^4.4.0",
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^1.1.1",
     "typescript": "^5.4.5"
