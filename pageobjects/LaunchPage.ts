@@ -47,7 +47,7 @@ async getTravelTheWorldMenuText() {
 }
 
 async getHomeMenuText() {
-    return await this.homeMenu.textContent();
+    return await this.homeMenu.first().textContent();
 }
 
 async selectDepartureDropDown(departure:string) {
