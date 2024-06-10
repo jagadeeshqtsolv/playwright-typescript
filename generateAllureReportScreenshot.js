@@ -5,7 +5,7 @@ const path = require('path');
     const browser = await chromium.launch({ headless: true });
     const context = await browser.newContext();
     const page = await context.newPage();
-    const filePath = path.resolve(__dirname, './Allure_20HTML_20Report/index.html');
+    const filePath = path.resolve(__dirname, './allure-report/');
     await page.goto(`file://${filePath}`);
     await page.screenshot({ path: 'reportscreenshot.png' });
     await browser.close();
