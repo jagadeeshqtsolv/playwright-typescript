@@ -7,7 +7,7 @@ const path = require('path');
     const page = await context.newPage();
     const filePath = path.resolve(__dirname, './allure-report/index.html');
     await page.goto(`file://${filePath}`);
-    await page.screenshot({ path: './allure-report/summary-screenshot.png' });
+    await page.screenshot({ path: 'reportscreenshot.png' });
     await browser.close();
 })();
 
