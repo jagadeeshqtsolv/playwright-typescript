@@ -23,6 +23,7 @@
     "@types/node-fetch": "^2.6.11",
     "allure-commandline": "^2.29.0",
     "allure-playwright": "^2.15.1",
+    "cross-fetch": "^4.0.0",
     "exceljs": "^4.4.0",
     "express": "^4.19.2",
     "pdf-lib": "^1.17.1",
