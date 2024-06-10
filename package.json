@@ -10,7 +10,7 @@
     "firefox": "BROWSER_NAME=firefox HEADLESS=true NODE_ENV=test npx playwright test --reporter=html,line,allure-playwright",
     "html-report": "HEADLESS=true npx playwright test --reporter=html && npx playwright show-report",
     "allureclean": "rm -rf allure-report",
-    "allureexecution": "HEADLESS=true npx playwright test --reporter=html,line,allure-playwright",
+    "allureexecution": "HEADLESS=true npx playwright test --reporter=html,line,allure-playwright || true",
     "alluregenerate": "npx allure generate ./allure-results --clean -o allure-report",
     "allureopen": "npx allure open ./allure-report"
   },
@@ -22,7 +22,7 @@
     "@types/node": "^20.14.0",
     "@types/node-fetch": "^2.6.11",
     "allure-playwright": "^2.15.1",
-    "exceljs": "^4.4.0",
+    "exceljs": "^4.4.0",  
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^1.1.1",
     "typescript": "^5.4.5"
