@@ -33,6 +33,7 @@ const stopServer = (server) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto('http://localhost:9090/index.html');
+    await page.waitForLoadState('networkidle');
     await page.screenshot({ path: 'reportscreenshot.png' });
     await browser.close();
     stopServer(server);
