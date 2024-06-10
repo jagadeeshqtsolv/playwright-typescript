@@ -11,8 +11,8 @@ const startServer = () => {
 
         app.use(express.static(path.resolve(__dirname, './allure-report')));
 
-        server.listen(8080, () => {
-            console.log('Server started on http://localhost:8080');
+        server.listen(9090, () => {
+            console.log('Server started on http://localhost:9090');
             resolve(server);
         });
 
@@ -32,7 +32,7 @@ const stopServer = (server) => {
     const browser = await chromium.launch({ headless: true });
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.goto('http://localhost:8080/index.html');
+    await page.goto('http://localhost:9090/index.html');
     await page.screenshot({ path: 'reportscreenshot.png' });
     await browser.close();
     stopServer(server);
