@@ -1,14 +1,39 @@
 const { chromium } = require('playwright');
 const path = require('path');
+const express = require('express');
+const http = require('http');
+
+// Function to start the Express server
+const startServer = () => {
+    return new Promise((resolve, reject) => {
+        const app = express();
+        const server = http.createServer(app);
+
+        app.use(express.static(path.resolve(__dirname, './allure-report')));
+
+        server.listen(8080, () => {
+            console.log('Server started on http://localhost:8080');
+            resolve(server);
+        });
+
+        server.on('error', (err) => {
+            reject(err);
+        });
+    });
+};
+
+// Function to stop the Express server
+const stopServer = (server) => {
+    server.close();
+};
 
 (async () => {
+    const server = await startServer();
     const browser = await chromium.launch({ headless: true });
     const context = await browser.newContext();
     const page = await context.newPage();
-    const filePath = path.resolve(__dirname, './allure-report/');
-    await page.goto(`file://${filePath}`);
+    await page.goto('http://localhost:8080/index.html');
     await page.screenshot({ path: 'reportscreenshot.png' });
     await browser.close();
+    stopServer(server);
 })();
-
-
