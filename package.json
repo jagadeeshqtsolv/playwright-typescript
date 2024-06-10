@@ -19,7 +19,7 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.44.1",
-    "@types/node": "^20.14.0",
+    "@types/node": "^18.16.1",
     "@types/node-fetch": "^2.6.11",
     "allure-commandline": "^2.29.0",
     "allure-playwright": "^2.15.1",
