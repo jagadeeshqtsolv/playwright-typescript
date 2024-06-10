@@ -1,4 +1,4 @@
-const automationType = process.env.AUTOMATION_TYPE || 'api';;
+const automationType = process.env.AUTOMATION_TYPE || 'web';;
 let testDir = './tests';
 
 if (automationType === 'api') {
