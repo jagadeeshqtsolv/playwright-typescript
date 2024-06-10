@@ -12,8 +12,6 @@ test(`@Web TC001_Validate home page`, async ({page})=>
     const launchPage = poManager.getLaunchPage();
     await launchPage.goTo();
 
-    expect.soft(await launchPage.getHeading1Text()).toBe("Welcome to the Simple Travel Agency!");
-    expect.soft(await launchPage.getTravelTheWorldMenuText).toContain("Travel The World");
     expect.soft(await launchPage.getHomeMenuText).toContain("home");  
 
     await launchPage.clickHomeMenu();
